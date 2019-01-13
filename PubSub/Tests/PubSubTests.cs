@@ -237,7 +237,7 @@ namespace PubSub.Tests
         [InlineData("invalid/")]
         [InlineData("/home/")]
         [InlineData("//home")]
-        [InlineData("/home/#")]
+        [InlineData("/home/##")] // Inline data changed because the original data represented a valid topic ("/home/#")
         public void PublishToInvalidTopic_Fails(string topic)
         {
             var ex = Assert.Throws<InvalidTopicException>(() => _pubSub.Publish(topic, 0));
